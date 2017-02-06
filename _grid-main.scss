@@ -1,0 +1,51 @@
+.grid-main {
+  max-width: 100%;
+
+  &-limited {
+    $a: 0;
+    $c: 0;
+    @each $b, $w in $grid-breakpoints {
+      $c: max($a, $w);
+      $a: max($w, $w);
+    }
+
+    & {
+      max-width: $c;
+    }
+  }
+
+  &-adaptive {
+    @each $b, $w in $grid-breakpoints {
+      @media (min-width: $w) {
+        max-width: $w;
+      }
+    }
+  }
+
+  & {
+    margin-top: 0rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0rem;
+  }
+
+  & {
+    box-sizing: border-box;
+  }
+
+  & {
+    padding-top: map-get($grid-gutters, xs) * 0;
+    padding-left: map-get($grid-gutters, xs) * 1;
+    padding-right: map-get($grid-gutters, xs) * 1;
+    padding-bottom: map-get($grid-gutters, xs) * 0;
+  }
+
+  @each $b, $w in $grid-breakpoints {
+    @media (min-width: $w) {
+      padding-top: map-get($grid-gutters, $b) * 0;
+      padding-left: map-get($grid-gutters, $b) * 1;
+      padding-right: map-get($grid-gutters, $b) * 1;
+      padding-bottom: map-get($grid-gutters, $b) * 0;
+    }
+  }
+}

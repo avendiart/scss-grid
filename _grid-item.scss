@@ -1,0 +1,22 @@
+.grid-item {
+  box-sizing: border-box;
+
+  & {
+    flex-shrink: 0;
+    flex-grow: 0;
+  }
+
+  padding-top: map-get($grid-gutters, xs) * 0 / 2;
+  padding-left: map-get($grid-gutters, xs) * 1 / 2;
+  padding-right: map-get($grid-gutters, xs) * 1 / 2;
+  padding-bottom: map-get($grid-gutters, xs) * 0 / 2;
+
+  @each $b, $w in $grid-breakpoints {
+    @media (min-width: $w) {
+      padding-top: map-get($grid-gutters, $b) * 0 / 2;
+      padding-left: map-get($grid-gutters, $b) * 1 / 2;
+      padding-right: map-get($grid-gutters, $b) * 1 / 2;
+      padding-bottom: map-get($grid-gutters, $b) * 0 / 2;
+    }
+  }
+}
